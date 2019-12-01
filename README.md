@@ -2,7 +2,7 @@
 
 # Identifying Pneumonia by Chest X-Ray Images
 
-![chest-xray-image](./media/636619135583776321-GettyImages-530196490.png)
+![chest-xray-image](./media/636619135583776321-GettyImages-530196490.jpg)
 
 I will build a convolutional neural network (CNN) to identify whether a patient has pneumonia or not by classifying their medical images. Recall shall be the success metric as there is a high risk associated with false negative classification when it comes to human diseases.
 
@@ -17,7 +17,7 @@ Source: https://data.mendeley.com/datasets/rscbjbr9sj/2
 Published: 6 Jan 2018 | Version 2 | DOI: 10.17632/rscbjbr9sj.2
 Contributor(s): Daniel Kermany, Kang Zhang, Michael Goldbaum
 
-![mendeley-website](./media/mendeley.png)
+![mendeley-website](./media/mendeley.jpg)
 
 Kaggle link:
 https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
