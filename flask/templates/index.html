@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Alert-ly</title>
+  <meta name="description" content="Alert-ly App - Rapid fire emergency alerts.">
+  <meta name="author" content="Sibel Tanoglu">
+
+  <link rel="stylesheet" type= "text/css" href="/static/styles.css">
+
+</head>
+
+<body>
+<h1>Alert-ly</h1>
+<p>Rapid alerts about emgergencies during a wildfire, in close to real time utilizing Twitter activity.</p>
+
+<div class="form-result-container">
+  <form action="/submit">
+    <p>
+      <label for="tweet-text">Enter Tweet text here:</label><br>
+      <textarea rows="8" name="tweet-text">{{tweet_text}}</textarea>
+    </p>
+    <p><button type="submit">Predict</button></p>
+  </form>
+
+  <div class="result-container {{result_Css}}">
+    <img src="/static/{{result_logo}}.svg" alt="twitter-logo">
+    <p class="result-text">{{result_message}}</p>
+  </div>
+</div>
+
+
+
+  <!-- <script src="js/scripts.js"></script> -->
+</body>
+</html>
