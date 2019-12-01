@@ -17,7 +17,7 @@ Source: https://data.mendeley.com/datasets/rscbjbr9sj/2
 Published: 6 Jan 2018 | Version 2 | DOI: 10.17632/rscbjbr9sj.2
 Contributor(s): Daniel Kermany, Kang Zhang, Michael Goldbaum
 
-![mendeley-website](./media/mendeley.jpg)
+![mendeley-website](./media/mendeley.JPG)
 
 Kaggle link:
 https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
