@@ -3,17 +3,73 @@
 html {
   font-family: sans-serif;
   font-size: 16px;
-  background-color: aliceblue;
     max-width: 800px;
       margin: 0 auto;
+      padding: 0;
+}
+
+#image-preview-container {
+  position: fixed;
+    z-index: -1000;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+}
+
+#image-preview {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  opacity: .5;
+}
+
+#nav-container {
+  height: 50px;
+  color: lightseagreen;
+    text-shadow: 1px 0px #000000;
+      font-size: 30px;
+      padding-left: 26px;
+  /* background-color: rgba(63, 191, 155, .5) */
+}
+
+#welcome-text {
+  text-align: center;
+  color: lightseagreen;
+  font-size: 32px;
+  text-shadow: 1px 0px #000000;
+}
+
+.good {
+  color: green !important;
+  font-weight: bold;
+}
+
+.bad {
+  color: yellow !important;
+  font-weight: bold;
+}
+
+button {
+  padding: 12px 24px;
+  color: white;
+  background-color: lightseagreen;
+  font-size: 18px;
+  border-radius: 12px;
+  border:0;
 }
 
 body {
-  padding: 10px 50px;
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
-  color: red;
+  color: white;
 }
 
 
@@ -21,13 +77,48 @@ h1 {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 200px;
+  justify-content: center;
+  color: whitesmoke;
 }
 
+.little-space {
+    margin-top: 155px !important;
+}
 
+#analyze-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
 
+.low-opacity {
+  opacity: .14 !important;
+}
 
-form {
-  flex: 3;
+.medium-opacity {
+
+}
+
+#image-upload {
+  width: 90px;
+}
+
+#result-text, #welcome-text {
+  display: none;
+}
+
+#result-text {
+  text-align: center;
+  color: whitesmoke;
+}
+
+.visible {
+  display: block !important;
+}
+
+.hidden {
+  display: none !important;
 }
 
 form > p:first-child label {
@@ -60,6 +151,7 @@ form > p > button {
   align-items: center;
   min-width: 200px;
   min-height: 150px;
+
 }
 
 .result-container > img {

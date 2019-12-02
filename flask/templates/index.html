@@ -4,35 +4,86 @@
 <head>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Alert-ly</title>
-  <meta name="description" content="Alert-ly App - Rapid fire emergency alerts.">
+  <title>X-ray App</title>
+  <meta name="description" content="X-ray App - Pneumonia x-ray analysis.">
   <meta name="author" content="Sibel Tanoglu">
-
   <link rel="stylesheet" type= "text/css" href="/static/styles.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
-<h1>Alert-ly</h1>
-<p>Rapid alerts about emgergencies during a wildfire, in close to real time utilizing Twitter activity.</p>
 
-<div class="form-result-container">
-  <form action="/submit">
-    <p>
-      <label for="tweet-text">Enter Tweet text here:</label><br>
-      <textarea rows="8" name="tweet-text">{{tweet_text}}</textarea>
-    </p>
-    <p><button type="submit">Predict</button></p>
-  </form>
+<div id="nav-container">
+  <h3 id="app-name">X-ray</h3>
+</div>
 
-  <div class="result-container {{result_Css}}">
+<div id="welcome-text" class="{{welcome_text_container_css}}">
+  <p>Pneumonia x-ray analysis.</p>
+</div>
+
+<div id="result-text" class="{{result_text_container_css}}">
+  <p class="result-text-line-1 {{result_text_line_1_css}}">{{result_text_line_1}}</p>
+    <p class="result-text-line-2 {{result_text_line_2_css}}">{{result_text_line_2}}</p>
+      <p class="result-text-line-3 {{result_text_line_3_css}}">{{result_text_line_3}}</p>
+</div>
+
+<div class="form-result-container {{top_margin_css}}">
+  <form id="upload-form" method="post" action="upload" enctype="multipart/form-data">
+        <label for="imageUpload" class="upload-label">
+            Select an x-ray image file:
+        </label>
+
+        <input type="file" name="image" id="image-upload" accept=".png, .jpg, .jpeg">
+        <div id="analyze-button-container">
+            <button id="analyze-button">Analyze</button>
+        </div>
+    </form>
+
+
+    <!-- <div class="image-section" style="display:none;">
+        <div class="img-preview">
+            <div id="imagePreview">
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg " id="btn-predict">Predict!</button>
+        </div>
+    </div>
+
+    <div class="loader" style="display:none;"></div>
+
+    <h3 id="result">
+        <span> </span>
+    </h3> -->
+
+  <!-- <div class="result-container {{result_Css}}">
     <img src="/static/{{result_logo}}.svg" alt="twitter-logo">
     <p class="result-text">{{result_message}}</p>
-  </div>
+  </div> -->
+</div>
+
+<div id="image-preview-container">
+  <img class="{{opacity_css}}" id="image-preview" src="/static/{{result_image}}" alt="x-ray image used for analysis" />
 </div>
 
 
-
   <!-- <script src="js/scripts.js"></script> -->
+  <script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#image-preview').attr('src', e.target.result);
+        $('#image-preview').removeClass("low-opacity");
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+    $("#image-upload").change(function() {
+      readURL(this);
+    });
+  </script>
 </body>
 </html>
