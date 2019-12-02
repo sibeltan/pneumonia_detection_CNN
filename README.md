@@ -116,7 +116,7 @@ Precision, Recall
 
 ## Flask Web Application
 
-A simple we application where user uploads a chest x-ray image and immediately receives the probability percentages of 3 distinct diagnoses:
+A simple web application where user uploads a chest x-ray image and immediately receives the probability percentages of 3 distinct diagnoses:
 1- Normal
 2- Bacterial Pneumonia
 3- Viral Pneumonia
