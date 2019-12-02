@@ -63,20 +63,20 @@ some additonal stuff here
 
 I manually checked the images and found that there are a lot of variations for such a small dataset. The hight/width ratio, zooming range, angle of the body etc features differ among differen Xray images. Even the physical dimensions of images are vastly different. This makes it harder to train a model that will give high accuracy rate. I decided to use generator class to generate more images within train data with optimal rotation_range, shear_range, zoom_range, horizontal_flip (mirroring randomly selected images) to get additional observations to train the model with.
 
- `  rescale=1./255,  
-    rotation_range=20,  
-    width_shift_range=0.1,  
-    height_shift_range=0.1,  
-    shear_range=0.1,  
-    zoom_range=0.2,  
-    horizontal_flip=True,  
-    fill_mode='nearest')  
+ `rescale=1./255,
+  rotation_range=20,
+  width_shift_range=0.1,
+  height_shift_range=0.1,
+  shear_range=0.1,
+  zoom_range=0.2,
+  horizontal_flip=True,
+  fill_mode='nearest'`
     
-    **Augmented images**
+   **Augmented images**
     
-    All images belong to same X-ray instance.
+   All images belong to same X-ray instance.
     
-    ![augmented_images](./media/augmented_images.JPG)    `
+   ![augmented_images](./media/augmented_images.JPG)    `
  
  ## Transfer Learning
  
