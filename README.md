@@ -41,15 +41,15 @@ For the analysis of chest x-ray images, all chest radiographs were initially scr
 
 [Part 1 - Data_Exploration_EDA] notebook focuses on exploring data, analyzing an plotting insightful stats (class balance, image size distribution, etc.), loading data as 3-dimensional array, and preprocess data to prepare for modeling.
 
-** Class Distribution**
+**Class Distribution**
 
 ![class_distribution](./media/classdistribution.JPG)
 
-** Image Size (Pixels) Distribution**
+**Image Size (Pixels) Distribution**
 
 ![image_size_distribution](./media/image_size_dist.JPG)
 
-** Healthy vs. Pneumonia**
+**Healthy vs. Pneumonia**
 
 ![healthy_vs_pneumonia](./media/pair_plot.JPG)
 
@@ -63,14 +63,20 @@ some additonal stuff here
 
 I manually checked the images and found that there are a lot of variations for such a small dataset. The hight/width ratio, zooming range, angle of the body etc features differ among differen Xray images. Even the physical dimensions of images are vastly different. This makes it harder to train a model that will give high accuracy rate. I decided to use generator class to generate more images within train data with optimal rotation_range, shear_range, zoom_range, horizontal_flip (mirroring randomly selected images) to get additional observations to train the model with.
 
- `rotation_range=20,
- width_shift_range=0.25,
- height_shift_range=0.25,
- rescale=1./255,
- shear_range=0.25,
- zoom_range=0.25,
- horizontal_flip=True,
- fill_mode='nearest'`
+ `  rescale=1./255,  
+    rotation_range=20,  
+    width_shift_range=0.1,  
+    height_shift_range=0.1,  
+    shear_range=0.1,  
+    zoom_range=0.2,  
+    horizontal_flip=True,  
+    fill_mode='nearest')  
+    
+    **Augmented images**
+    
+    All images belong to same X-ray instance.
+    
+    ![augmented_images](./media/augmented_images.JPG)    `
  
  ## Transfer Learning
  
