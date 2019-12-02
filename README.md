@@ -37,9 +37,9 @@ For the analysis of chest x-ray images, all chest radiographs were initially scr
 234 .jpeg images labeled as NORMAL.
 
 
-## EDA
+## Data Exploration & EDA
 
-[Part 1 - Data_Exploration_EDA] notebook focuses on exploring data, analyzing an plotting insightful stats (class balance, image size distribution, etc.), loading data as 3-dimensional array, and preprocess data to prepare for modeling.
+[1_Data_Exploration_EDA] notebook focuses on exploring data, analyzing an plotting insightful stats (class balance, image size distribution, etc.), loading data as 3-dimensional array, and preprocess data to prepare for modeling.
 
 **Class Distribution**
 
@@ -59,7 +59,7 @@ some additonal stuff here
 
 ## Data Preprocessing & Modeling
 
-[Part 2 - Data_Preprocessing_Modeling] notebook focuses on preprocessing data to bring them optimal size and format using data augmentation parameters. Once the preprocessing complete, I will train various Tensorflow Keras "sequential" and ""convolutional" networks as well as pre-trained models to sample transfer learning to come up with best results. As the classes are imbalanced, my success metrics should be Precision and Recall. Specifically Recall score is the most important as our goal is to focus on minimizing false negative rates to not classify a patient as healthy while in fact they have pneumonia.
+[2_Data_Preprocessing_Simple_CNN] notebook focuses on preprocessing data to bring them optimal size and format using data augmentation parameters. Once the preprocessing complete, I will train various Tensorflow Keras "sequential" and ""convolutional" networks as well as pre-trained models to sample transfer learning to come up with best results. As the classes are imbalanced, my success metrics should be Precision and Recall. Specifically Recall score is the most important as our goal is to focus on minimizing false negative rates to not classify a patient as healthy while in fact they have pneumonia.
 
 I manually checked the images and found that there are a lot of variations for such a small dataset. The hight/width ratio, zooming range, angle of the body etc features differ among differen Xray images. Even the physical dimensions of images are vastly different. This makes it harder to train a model that will give high accuracy rate. I decided to use generator class to generate more images within train data with optimal rotation_range, shear_range, zoom_range, horizontal_flip (mirroring randomly selected images) to get additional observations to train the model with.
 
@@ -80,7 +80,7 @@ I manually checked the images and found that there are a lot of variations for s
  
  ## Transfer Learning (VGG16 Pre-trained Model)
  
-I decided to use the artichecture of a pre-trained model as I was curious about transfer learning outcome. Transfer learning is using a pre-trained model and its weights on a different dataset. I chose to create an instance from VGG16 convolutional neural network model which is popular from ImageNet competition. This would allow me to save a lot of time while testing the performance of my data with an additional model.
+I decided to use the artichecture of a pre-trained model as I was curious about transfer learning outcome. Transfer learning is using a pre-trained model and/or its weights on a different dataset. I chose to use only the arthitecture of VGG16 convolutional neural network model which is popular from ImageNet competition. This allowed me to save a lot of time testing the performance of my data with an additional model without requiring vast amount of hyperparameter tunning and optimizing.
 
 **VG166 Arthitecture**
 
@@ -109,6 +109,9 @@ Model Arthitecture:
 **Model Evaluation**
 Accuracy:
 Loss:
+
+![accuracy_loss](./media/accuracy_loss.JPG)
+
 
 **Confusion Matrix:**
 
