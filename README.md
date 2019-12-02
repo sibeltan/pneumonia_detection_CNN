@@ -78,7 +78,7 @@ I manually checked the images and found that there are a lot of variations for s
     
    ![augmented_images](./media/augmented_images.JPG)    `
  
- ## Transfer Learning
+ ## Transfer Learning (VGG16 Pre-trained Model)
  
 I decided to use the artichecture of a pre-trained model as I was curious about transfer learning outcome. Transfer learning is using a pre-trained model and its weights on a different dataset. I chose to create an instance from VGG16 convolutional neural network model which is popular from ImageNet competition. This would allow me to save a lot of time while testing the performance of my data with an additional model.
 
@@ -88,3 +88,37 @@ I decided to use the artichecture of a pre-trained model as I was curious about 
 
 Source: https://neurohive.io/en/popular-networks/vgg16/
 
+**VGG16 Model Evaluation**
+Accuracy:
+Loss:
+
+**Confusion Matrix:**
+
+Precision, Recall
+
+
+
+....
+
+## Complex CNN with Multiclass (Normal, Bacterial Pneumonia, Viral Pneumonia)
+
+Model Arthitecture:
+
+......
+
+**Model Evaluation**
+Accuracy:
+Loss:
+
+**Confusion Matrix:**
+
+Precision, Recall
+
+## Flask Web Application
+
+A simple we application where user uploads a chest x-ray image and immediately receives the probability percentages of 3 distinct diagnoses:
+1- Normal
+2- Bacterial Pneumonia
+3- Viral Pneumonia
+
+![flask_app](./media/flask_app.JPG)
