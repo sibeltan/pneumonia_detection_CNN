@@ -23,7 +23,8 @@
 - [Heading](#1. Executive Summary)
 - [Heading](#2. Data)
 - [Heading](#3. Model Performance)
-- [Heading](#4. Next Steps)
+- [Heading](#4. Web Application)
+- [Heading](#5. Next Steps)
 
 ## ***1. Executive Summary***
 
@@ -32,6 +33,8 @@ Pneumonia is an inflammatory condition of the lung affecting primarily the small
 Pneumonia is usually caused by infection with viruses or bacteria and less commonly by other microorganisms, certain medications and conditions such as autoimmune diseases. Diagnosis is often based on the symptoms and physical examination. Chest X-ray, blood tests, and culture of the sputum may help confirm the diagnosis. The disease may be classified by where it was acquired with community, hospital, or health care associated pneumonia.
 
 The goal of this project is constructing a convolutional neural network (CNN) to identify whether a patient has pneumonia or not by classifying their chest X-ray images. This project is adequately scoped and focuses on one specific type of disease rather than targeting multiple diagnosis. Creating a robust algorithm that provides fast and accurate diagnosis is beneficial for both patients and medical proffesionals.
+
+![pair_plot](./media/pair.png)
 
 
 ## ***2. Data***
@@ -52,9 +55,19 @@ Approximately 10% of the images from each category were moved to test folder to 
 - Precision: 72%  
 - Recall 98%  
 
-![chest-xray-image](./media/confusion_matrix.png)
+![confusion-matrix](./media/confusion_matrix.png)
 
-## ***4. Next Steps***
+## ***4. Web Application***
+
+A web application was built where user uploads a chest x-ray image and immediately receives the probability rates of 3 distinct diagnoses:   
+1- Normal  
+2- Bacterial Pneumonia  
+3- Viral Pneumonia  
+
+![flask-app](./media/flask.png)
+
+
+## ***5. Next Steps***
 
 - Collecting more data.  
 - Adding more complexity in model and using gridsearch functionality.  
