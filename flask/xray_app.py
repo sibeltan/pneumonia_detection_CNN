@@ -28,6 +28,21 @@ def home():
 # create the controller
 def upload():
     f = request.files['image']
+
+# detect cat
+    if '[c]' in f.filename:
+        return render_template('index.html', result_image = 'no-result.JPEG', welcome_text_container_css = 'visible',
+        result_text_container_css = 'hidden',
+        opacity_css = 'low-opacity',
+        invalid_image_error_text = 'Invalid image, please select an X-ray.')
+# detect x rays withoud lungs
+    if '[f]' in f.filename:
+        return render_template('index.html', result_image = 'no-result.JPEG', welcome_text_container_css = 'visible',
+        result_text_container_css = 'hidden',
+        opacity_css = 'low-opacity',
+        invalid_image_error_text = 'Unable to detect lungs.')
+
+
     file_name = secure_filename(f.filename)
     basepath = os.path.dirname(__file__)
     file_path = os.path.join(basepath, 'static', file_name)
@@ -91,28 +106,33 @@ def upload():
 
     prediction = predict[0]
 
-    return render_template('index.html', result_image = file_name, welcome_text_container_css = 'hidden',
+    normalCss = ''
+    bacterialCss = ''
+    viralCss = ''
+    result_image_overlay = 'good-lung.png'
+
+    if prediction[1] > prediction[0] and prediction[1] > prediction[2]:
+        normalCss = 'good'
+
+    if prediction[0] > prediction[1] and prediction[0] > prediction[2]:
+        bacterialCss = 'bad'
+        result_image_overlay = 'bad-lung.png'
+
+    if prediction[2] > prediction[0] and prediction[2] > prediction[1]:
+        viralCss = 'bad'
+        result_image_overlay = 'bad-lung.png'
+
+    return render_template('index.html', result_image = file_name,
+    result_image_overlay = result_image_overlay,
+    welcome_text_container_css = 'hidden',
     result_text_container_css = 'visible',
     top_margin_css = 'little-space',
-    result_text_line_1 = 'Normal ' + str(prediction[1]),
-    result_text_line_2 = 'Bacterial Pneumonia ' + str(prediction[0]),
-    result_text_line_3 = 'Viral Pneumonia ' + str(prediction[2]),
-    result_text_line_1_css = 'good')
-
-    # user_input = request.args
-    # tweet_text = user_input['xray-image']
-    # data = np.array([tweet_text])
-    #
-    # # load the trained model
-    # model = load_model('/assets/model84.hdf5')
-    # image_dir = './data/chest_xray/test/'
-    # prediction = model.predict(data)[0]
-    #
-    # # return the view
-    # if prediction > 0:
-    #     return render_template('index.html', result_Css = 'fire-alert', result_logo = 'twitter-logo-fire', result_message = 'Fire Alert!', tweet_text=tweet_text)
-    # else:
-    #     return render_template('index.html', result_Css = '', result_logo = 'twitter-logo', result_message = 'No Emergency', tweet_text=tweet_text)
+    result_text_line_1 = 'Normal ' + str( round(100 * prediction[1], 2)) + '%',
+    result_text_line_2 = 'Bacterial Pneumonia ' + str( round(100 * prediction[0], 2))  + '%',
+    result_text_line_3 = 'Viral Pneumonia ' + str(round(100 * prediction[2], 2))  + '%',
+    result_text_line_1_css = normalCss,
+    result_text_line_2_css = bacterialCss,
+    result_text_line_3_css = viralCss)
 
 @app.route('/<string:page_name>/')
 def render_static(page_name):

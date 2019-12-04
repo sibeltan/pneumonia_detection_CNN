@@ -19,7 +19,7 @@
 
 <div id="welcome-text" class="{{welcome_text_container_css}}">
   <p>Pneumonia x-ray analysis.</p>
-    <p id='invalid-image-text' class="bad">{{invalid_image_error_text}}</p>
+  <p class="bad">Unable to detect longs.</p>
 </div>
 
 <div id="result-text" class="{{result_text_container_css}}">
@@ -63,9 +63,6 @@
         $('#welcome-text').removeClass("hidden");
         $('#welcome-text').addClass("visible");
         $('#image-preview-overlay').addClass("hidden");
-        $("#invalid-image-text").empty();
-
-
       }
 
       reader.readAsDataURL(input.files[0]);

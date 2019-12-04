@@ -22,10 +22,32 @@ html {
 }
 
 #image-preview {
-  max-width: 100%;
+  max-width: 800px;
   height: auto;
   border-radius: 15px;
   opacity: .5;
+}
+
+#image-preview-overlay {
+  max-width: 800px;
+  height: auto;
+  opacity: .5;
+  animation: result-overlay 3s infinite;
+  position: absolute;
+  top: -145px;
+}
+
+
+@keyframes result-overlay {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .2;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 #nav-container {
@@ -45,13 +67,17 @@ html {
 }
 
 .good {
-  color: green !important;
+  color: lightseagreen !important;
   font-weight: bold;
+  font-size: 28px !important;
+    text-shadow: 1px 0px #000000;
 }
 
 .bad {
   color: yellow !important;
   font-weight: bold;
+  font-size: 28px !important;
+    text-shadow: 1px 0px #000000;
 }
 
 button {
@@ -93,7 +119,7 @@ h1 {
 }
 
 .low-opacity {
-  opacity: .14 !important;
+  opacity: .1 !important;
 }
 
 .medium-opacity {
