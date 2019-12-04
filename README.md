@@ -20,11 +20,11 @@
 
 ## ***Table of Contents***
 
-- [Heading](#1. Executive Summary)
-- [Heading](#2. Data)
-- [Heading](#3. Model Performance)
-- [Heading](#4. Web Application)
-- [Heading](#5. Next Steps)
+* [***1. Executive Summary***](#---1-executive-summary---)
+  * [***2. Data***](#---2-data---)
+  * [***3. Model Performance***](#---3-model-performance---)
+  * [***4. Web Application***](#---4-web-application---)
+  * [***5. Next Steps***](#---5-next-steps---)
 
 ## ***1. Executive Summary***
 
