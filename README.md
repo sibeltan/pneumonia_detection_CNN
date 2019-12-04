@@ -4,124 +4,60 @@
 
 ![chest-xray-image](./media/636619135583776321-GettyImages-530196490.jpg)
 
-I will build a convolutional neural network (CNN) to identify whether a patient has pneumonia or not by classifying their medical images. Recall shall be the success metric as there is a high risk associated with false negative classification when it comes to human diseases.
+## ***Repository Contents***
 
-This project is adequately scoped and focuses on one specific type of disease rather than targeting multiple diagnosis. Therefore, there is a high chance to generate substentially accurate results.
+- code  
+    - 1_Data_Collection_EDA  
+    - 2_Data_Preprosessing_Simple_CNN  
+    - 3_Model_VGG16_Arthitecture  
+    - 4_Model_Complex_CNN  
+    - 5_Model_Interpretation  
+- data  
+- flask  
+- media  
+- Technical_Report.ipnyb  
+- Capstone_Presentation.pdf  
 
-Pneumonia is an infection that inflames lungs and can be diagnosed by radiologists who view the patient's chest x-rays. Creating an algorithm that provides accurate diagnosis can be beneficial for both patients and medical proffesionals.
+## ***Table of Contents***
 
+- [Heading](#1. Executive Summary)
+- [Heading](#2. Data)
+- [Heading](#3. Model Performance)
+- [Heading](#4. Next Steps)
 
-## Data Guidelines
+## ***1. Executive Summary***
 
-Source: https://data.mendeley.com/datasets/rscbjbr9sj/2
-Published: 6 Jan 2018 | Version 2 | DOI: 10.17632/rscbjbr9sj.2
-Contributor(s): Daniel Kermany, Kang Zhang, Michael Goldbaum
+Pneumonia is an inflammatory condition of the lung affecting primarily the small air sacs known as alveoli. Typically symptoms include some combination of productive or dry cough, chest pain, fever, and trouble breathing. Severity is variable.
 
-![mendeley-website](./media/mendeley.JPG)
+Pneumonia is usually caused by infection with viruses or bacteria and less commonly by other microorganisms, certain medications and conditions such as autoimmune diseases. Diagnosis is often based on the symptoms and physical examination. Chest X-ray, blood tests, and culture of the sputum may help confirm the diagnosis. The disease may be classified by where it was acquired with community, hospital, or health care associated pneumonia.
 
-Kaggle link:
-https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
-
-Chest X-ray images (anterior-posterior) were selected from retrospective cohorts of pediatric patients of one to five years old from Guangzhou Women and Children’s Medical Center, Guangzhou. All chest X-ray imaging was performed as part of patients’ routine clinical care.
-
-For the analysis of chest x-ray images, all chest radiographs were initially screened for quality control by removing all low quality or unreadable scans. The diagnoses for the images were then graded by two expert physicians before being cleared for training the AI system. In order to account for any grading errors, the evaluation set was also checked by a third expert.
-
-**Train Dataset**
-
-3883 .jpeg images labeled as PNEUMONIA (bacterial).
-1349 .jpeg images labeled as NORMAL.
-
-**Test Dataset**
-
-390 .jpeg images labeled as PNEUMONIA (viral).
-234 .jpeg images labeled as NORMAL.
+The goal of this project is constructing a convolutional neural network (CNN) to identify whether a patient has pneumonia or not by classifying their chest X-ray images. This project is adequately scoped and focuses on one specific type of disease rather than targeting multiple diagnosis. Creating a robust algorithm that provides fast and accurate diagnosis is beneficial for both patients and medical proffesionals.
 
 
-## Data Exploration & EDA
+## ***2. Data***
 
-[1_Data_Exploration_EDA] notebook focuses on exploring data, analyzing an plotting insightful stats (class balance, image size distribution, etc.), loading data as 3-dimensional array, and preprocess data to prepare for modeling.
+Source: https://data.mendeley.com/datasets/rscbjbr9sj/2  
+Published: 6 Jan 2018 | Version 2 | DOI: 10.17632/rscbjbr9sj.2  
+Contributor(s): Daniel Kermany, Kang Zhang, Michael Goldbaum  
 
-**Class Distribution**
+The data used was collected from Mendeley public datasets repository and described as Labeled Optical Coherence Tomography (OCT) and Chest X-Ray Images for Classification. Chest X-ray images were selected from retrospective cohorts of pediatric patients of one to five years old from Women and Children’s Medical Center, Guangzhou. The dataset consists of 5,863 X-Ray images (JPEG) and 2 categories: Pneumonia/Normal. Pneumonia images are annotated as Bacterial or Viral in file names that were later separated to build a multiclass classification network.  
+Approximately 10% of the images from each category were moved to test folder to be used in validation of the model.
 
-![class_distribution](./media/classdistribution.JPG)
+![data](./media/data.png)
 
-**Image Size (Pixels) Distribution**
+## ***3. Model Performance***
 
-![image_size_distribution](./media/image_size_dist.JPG)
+- Train Accuracy: 84%  
+- Validation Accuracy: 86%  
+- Precision: 72%  
+- Recall 98%  
 
-**Healthy vs. Pneumonia**
+![chest-xray-image](./media/confusion_matrix.png)
 
-![healthy_vs_pneumonia](./media/pair_plot.JPG)
+## ***4. Next Steps***
 
-
-
-some additonal stuff here
-
-## Data Preprocessing & Modeling
-
-[2_Data_Preprocessing_Simple_CNN] notebook focuses on preprocessing data to bring them optimal size and format using data augmentation parameters. Once the preprocessing complete, I will train various Tensorflow Keras "sequential" and ""convolutional" networks as well as pre-trained models to sample transfer learning to come up with best results. As the classes are imbalanced, my success metrics should be Precision and Recall. Specifically Recall score is the most important as our goal is to focus on minimizing false negative rates to not classify a patient as healthy while in fact they have pneumonia.
-
-I manually checked the images and found that there are a lot of variations for such a small dataset. The hight/width ratio, zooming range, angle of the body etc features differ among differen Xray images. Even the physical dimensions of images are vastly different. This makes it harder to train a model that will give high accuracy rate. I decided to use generator class to generate more images within train data with optimal rotation_range, shear_range, zoom_range, horizontal_flip (mirroring randomly selected images) to get additional observations to train the model with.
-
- `rescale=1./255,
-  rotation_range=20,
-  width_shift_range=0.1,
-  height_shift_range=0.1,
-  shear_range=0.1,
-  zoom_range=0.2,
-  horizontal_flip=True,
-  fill_mode='nearest'`
-    
-   **Augmented images**
-    
-   All images belong to same X-ray instance.
-    
-   ![augmented_images](./media/augmented_images.JPG)    `
- 
- ## Transfer Learning (VGG16 Pre-trained Model)
- 
-I decided to use the artichecture of a pre-trained model as I was curious about transfer learning outcome. Transfer learning is using a pre-trained model and/or its weights on a different dataset. I chose to use only the arthitecture of VGG16 convolutional neural network model which is popular from ImageNet competition. This allowed me to save a lot of time testing the performance of my data with an additional model without requiring vast amount of hyperparameter tunning and optimizing.
-
-**VG166 Arthitecture**
-
-![mendeley-website](./media/VGG16.png)
-
-Source: https://neurohive.io/en/popular-networks/vgg16/
-
-**VGG16 Model Evaluation**
-Accuracy:
-Loss:
-
-**Confusion Matrix:**
-
-Precision, Recall
-
-
-
-....
-
-## Complex CNN with Multiclass (Normal, Bacterial Pneumonia, Viral Pneumonia)
-
-Model Arthitecture:
-
-......
-
-**Model Evaluation**
-Accuracy:
-Loss:
-
-![accuracy_loss](./media/accuracy_loss.JPG)
-
-
-**Confusion Matrix:**
-
-Precision, Recall
-
-## Flask Web Application
-
-A simple web application where user uploads a chest x-ray image and immediately receives the probability percentages of 3 distinct diagnoses:
-1- Normal
-2- Bacterial Pneumonia
-3- Viral Pneumonia
-
-![flask_app](./media/flask_app.JPG)
+- Collecting more data.  
+- Adding more complexity in model and using gridsearch functionality.  
+- Creating additional model with PyTorch library and compare the results.  
+- Researching on how to detect most informative pixels on X-ray (highest weights) and highlight them on image output.  
+- Having radiologists interpret same X-rays and compare their performance with model’s performance.
