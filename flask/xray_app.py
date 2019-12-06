@@ -29,20 +29,6 @@ def home():
 def upload():
     f = request.files['image']
 
-# detect cat
-    if '[c]' in f.filename:
-        return render_template('index.html', result_image = 'no-result.JPEG', welcome_text_container_css = 'visible',
-        result_text_container_css = 'hidden',
-        opacity_css = 'low-opacity',
-        invalid_image_error_text = 'Invalid image, please select an X-ray.')
-# detect x rays withoud lungs
-    if '[f]' in f.filename:
-        return render_template('index.html', result_image = 'no-result.JPEG', welcome_text_container_css = 'visible',
-        result_text_container_css = 'hidden',
-        opacity_css = 'low-opacity',
-        invalid_image_error_text = 'Unable to detect lungs.')
-
-
     file_name = secure_filename(f.filename)
     basepath = os.path.dirname(__file__)
     file_path = os.path.join(basepath, 'static', file_name)
