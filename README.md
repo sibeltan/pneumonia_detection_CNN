@@ -4,19 +4,21 @@
 
 ![chest-xray-image](./media/636619135583776321-GettyImages-530196490.jpg)
 
+Presentation Link: [Presentation Slides and Demo Video](https://docs.google.com/presentation/d/1Yf4C-HfxTWRG2sM82r6TZainWcC97DKFAntDyeW_ZAQ)
+
 ## ***Repository Contents***
 
 - code  
     - 1_Data_Collection_EDA  
     - 2_Data_Preprosessing_Simple_CNN  
-    - 3_Model_VGG16_Arthitecture  
-    - 4_Model_Complex_CNN  
+    - 3_Model_CNN_Binary_Classification   
+    - 4_Model_Complex_CNN_Multiclass  
     - 5_Model_Interpretation  
 - data  
 - flask  
 - media  
 - Technical_Report.ipnyb  
-- Capstone_Presentation.pdf  
+- Pneumonia_Detection_Presentation.pdf  
 
 ## ***Table of Contents***
 
