@@ -6,6 +6,8 @@
 
 Presentation Link: [Presentation Slides and Demo Video](https://docs.google.com/presentation/d/1Yf4C-HfxTWRG2sM82r6TZainWcC97DKFAntDyeW_ZAQ)
 
+Blog Post: https://medium.com/@sibeltanoglu/capstone-project-pneumonia-detection-by-x-ray-using-neural-networks-493f8e41a230
+
 ## ***Repository Contents***
 
 - code  
